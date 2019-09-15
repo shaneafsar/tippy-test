@@ -18,6 +18,10 @@ export default Component.extend({
   actions: {
     onTipChange: function(newTipValue) {
       this.set('tipValue', newTipValue);
+    },
+    onSubmit: function(e) {
+      debugger;
+      e.preventDefault();
     }
   }
 });
