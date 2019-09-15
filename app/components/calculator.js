@@ -15,12 +15,18 @@ export default Component.extend({
       this.get('totalBillWithTip') > 0 && !isNaN(this.get('totalBillWithTip'))
     );
   }),
+  didReceiveAttrs: function() {
+    this._super(...arguments);
+    const inputAmount = this.get('inputAmount');
+    if (inputAmount && !isNaN(parseFloat(inputAmount))) {
+      this.set('totalBill', parseFloat(inputAmount));
+    }
+  },
   actions: {
     onTipChange: function(newTipValue) {
       this.set('tipValue', newTipValue);
     },
     onSubmit: function(e) {
-      debugger;
       e.preventDefault();
     }
   }
